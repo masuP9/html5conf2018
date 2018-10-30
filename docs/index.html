@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>セマンティクスの作り方、これまで、今、そして未来</title>
+  <meta name="description" content="HTMLによるネイティブセマンティクスからWAI-ARIAによるセマンティクスの補強、そしてAOM（Accessibility Object Model）によってJavaScriptからアクセシビリティツリーを更新できる未来。ウェブのセマンティクスの作り方について、これまでと現在を振り返りながら未来についてもご紹介いたします。">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css">
+  <link rel="stylesheet" href="css/additional.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/vs2015.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>
+          セマンティクスの作り方、これまで、今、そして未来
+        </h1>
+        <footer>
+          <p class="u-taL">
+            <small>
+              <time datetime="2018-11-25">2018-11-25</time>
+              HTML5 Conference 2018 B3
+            </small>
+          </p>
+        </footer>
+      </section>
+      <section>
+        <h2>私たち</h2>
+        <p class="u-taL u-dF -middle">
+          <img class="u-mr16" src="./assets/masuP9.jpg" height="150"
+            style="border-radius: 50%;" alt="@masuP9のプロフィール写真。ますぴーとかかれた木製のバッジの写真" />
+          <span>
+            <a href="https://twitter.com/masuP9">@masuP9</a><small class="u-ml4">(わかり手)</small>
+            <span class="u-dB">株式会社サイバーエージェント</span>
+          </span>
+        </p>
+        <p class="u-taL u-dF -middle">
+          <img class="u-mr16" src="./assets/o_ti.jpg" height="150"
+            style="border-radius: 50%;" alt="@o_tiのプロフィール写真。机の上の卵かけご飯" />
+          <span>
+            <a href="https://twitter.com/o_ti">@o_ti</a><small class="u-ml4">(キレ手)</small>
+            <span class="u-dB">株式会社まぼろし</span>
+          </span>
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+      slideNumber: true,
+      history: true,
+      dependencies: [
+        { src: 'plugin/markdown/marked.js' },
+        { src: 'plugin/markdown/markdown.js' },
+        { src: 'plugin/notes/notes.js', async: true },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+      ]
+    });
+  </script>
+</body>
+
+</html>
