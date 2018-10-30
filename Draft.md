@@ -1,27 +1,54 @@
 # セマンティクスの作り方、これまで、今、そして未来
 
-1. 私たち（1分）
-2. 今日話すこと（1分）
-3. なぜセマンティクスが重要なのか（10分）
-   1. マシンリーダビリティ（5分）
-   2. アクセシビリティ（5分）
-     1. UIを知覚する云々
-     2. アクセシビリティAPI
-4. どうやってセマンティクスを作るのか（25分）
-   1. HTML（5分）
-     1. HTMLとは（いらなさそう）
-     2. 
-   2. WAI-ARIA（8分）
-     1. WAI-ARIAとは
-     2. WAI-ARIAで何ができる
-       1. role, state, props の補強の話
-     3. [WAI-ARIA ロードマップ](https://www.w3.org/WAI/ARIA/roadmap)
-       1. 1.2 でHTMLのセマンティクスが網羅される
-       2. それ以降
-   3. AOM（12分）
-     1. [AOMとは](http://wicg.github.io/aom/)
-     2. AOMで何ができる
-     3. AOM想定ユースケース
-       1. 支援技術のログをGAに送る
-       2. 支援技術かそうでないかによって挙動を変える
-         1. Web Speech API or live region
+## 私たち（1 分）
+
+## 今日話すこと（1 分）
+
+## なぜセマンティクスが重要なのか（10 分）
+
+### マシンリーダビリティ（5 分）
+
+### アクセシビリティ（5 分）
+
+#### UI を知覚する云々
+
+#### アクセシビリティ API
+
+## どうやってセマンティクスを作るのか（25 分）
+
+### HTML（5 分）
+
+#### HTML とは（いらなさそう）
+
+### WAI-ARIA（8 分）
+
+#### WAI-ARIA とは
+
+#### WAI-ARIA で何ができる
+
+##### role, state, props の補強の話
+
+#### [WAI-ARIA ロードマップ](https://www.w3.org/WAI/ARIA/roadmap)
+
+##### 1.2 で HTML のセマンティクスが網羅される
+
+##### それ以降
+
+### AOM（12 分）
+
+#### [AOM とは](http://wicg.github.io/aom/)
+
+##### [Can I use AOM](http://wicg.github.io/aom/caniuse.html)
+
+- How to enable AOM
+- Can I use
+
+#### AOM で何ができる
+
+#### AOM 想定ユースケース
+
+##### 支援技術のログを GA に送る
+
+##### 支援技術かそうでないかによって挙動を変える
+
+###### Web Speech API or live region
