@@ -60,6 +60,98 @@
           </span>
         </p>
       </section>
+      <section>
+        <h2>今日のお話</h2>
+        <!-- TODO 分かりやすくスコープを説明したい -->
+        <!-- 主にWCAG的なアクセシビリティに寄っているという話もしたほうが良いかも？ -->
+        <p>広義のセマンティクスと今回のセマンティクス</p>
+        <p><abbr title="Linked Of Data">LOD</abbr>などの文書間セマンティクスや、XMLやRDFなどの独自の意味の疎通というよりかは、一般的なウェブサイトやアプリをエンドユーザーがブラウザを通して利用する際のセマンティクス</p>
+      </section>
+      <section>
+        <p>今日の話はいくつかある未来のうち、ある一つの未来の話</p>
+      </section>
+      <section>
+        <ol>
+          <li>HTML</li>
+          <li>WAI-ARIA</li>
+          <li>Accessibility Object Model</li>
+        </ol>
+      </section>
+      <section>
+        <h2>これまで : <abbr title="Hyper Text Markup Language">HTML</abbr></h2>
+        <p>もちろんいまでも！</p>
+      </section>
+      <section>
+        <h3>HTMLによる宣言的なセマンティクス</h3>
+        <pre><code class="html">&lt;section&gt;
+  &lt;h2&gt;見出し&lt;/h2&gt;
+  &lt;p&gt;&lt;a href=&quot;#&quot;&gt;パラグラフ&lt;/a&gt;&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;リスト&lt;/li&gt;
+    &lt;li&gt;リスト&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;button type=&quot;button&quot;&gt;ボタン&lt;/button&gt;
+&lt;/section&gt;</code></pre>
+      </section>
+      <section>
+        <p>タグ（要素）によってセマンティクスを</p>
+        <p>要素のネストによって構造を構築</p>
+      </section>
+      <section>
+        <h3>セマンティクスの恩恵</h3>
+      </section>
+      <section>
+        <h3>HTMLの課題</h3>
+        <p><em>要素名（タグ）に依存する</em></p>
+      </section>
+      <section>
+        <!-- ひとつずつスライドにしなくてもいいかな -->
+        <ul>
+          <li>セマンティクスの変更 = DOMツリーの変更</li>
+          <li>UAスタイルシートとの密結合</li>
+          <li>新しいセマンティクス = 新しい要素</li>
+          <li>状態やプロパティの欠如</li>
+          <li>要素間の関係性が</li>
+        </ul>
+      </section>
+      <section>
+        <p>背景: 動的なウェブアプリケーションの隆盛</p>
+      </section>
+      <section>
+        <!-- いらないかもだけど -->
+        <p>解決策はいくつか</p>
+        <ul>
+          <li>XHTML</li>
+          <li>Microdata</li>
+          <li>RDF</li>
+          <li>Schema.org</li>
+        </ul>
+        <p><small>etc...</small></p>
+      </section>
+      <section>
+        <h2>WAI-ARIA</h2>
+        <p>Accessible Rich Internet Application</p>
+        <p>HTMLの抱える問題をアクセシビリティの面で解決する。</p>
+      </section>
+      <section>
+        <h3>特徴</h3>
+        <ul>
+          <li>予め決められた属性による宣言的なセマンティクス</li>
+          <li>役割以外に状態やプロパティを持てる</li>
+        </ul>
+      </section>
+      <section>
+        <dl>
+          <dt><code>role</code></dt>
+          <dd>役割</dd>
+          <dt><code>aria-*</code></dt>
+          <dd>状態、プロパティ</dd>
+        </dl>
+      </section>
+      <section>
+        <h4>関係のセマンティクス</h4>
+
+      </section>
     </div>
   </div>
 
