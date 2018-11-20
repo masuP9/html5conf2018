@@ -79,6 +79,11 @@
   vertical-align: bottom !important;
 }
 
+.reveal .u-demo {
+  padding: 1em;
+  border: 1px solid #fff;
+}
+
 /* margin */
 
 .u-mA {

@@ -36,7 +36,7 @@
           <p class="u-taL">
             <small>
               <time datetime="2018-11-25">2018-11-25</time>
-              HTML5 Conference 2018 B3
+              HTML5 Conference 2018 E3
             </small>
           </p>
         </footer>
@@ -68,18 +68,23 @@
         <p><abbr title="Linked Of Data">LOD</abbr>などの文書間セマンティクスや、XMLやRDFなどの独自の意味の疎通というよりかは、一般的なウェブサイトやアプリをエンドユーザーがブラウザを通して利用する際のセマンティクス</p>
       </section>
       <section>
-        <p>今日の話はいくつかある未来のうち、ある一つの未来の話</p>
+        <p>今日はいくつかある未来の中から<span class="u-dIb">ある一つの未来の話をします</span></p>
       </section>
       <section>
-        <ol>
+        <h3>目次</h3>
+        <ol role="directory">
+          <li>セマンティクスの恩恵</li>
           <li>HTML</li>
           <li>WAI-ARIA</li>
-          <li>Accessibility Object Model</li>
+          <li style="white-space: nowrap;">Accessibility Object Model</li>
         </ol>
       </section>
       <section>
-        <h2>これまで : <abbr title="Hyper Text Markup Language">HTML</abbr></h2>
-        <p>もちろんいまでも！</p>
+        <h2>セマンティクスの恩恵</h2>
+        <p>ウェブがよりアクセシブルになる。</p>
+      </section>
+      <section>
+        <h2><abbr title="Hyper Text Markup Language">HTML</abbr></h2>
       </section>
       <section>
         <h3>HTMLによる宣言的なセマンティクス</h3>
@@ -94,11 +99,7 @@
 &lt;/section&gt;</code></pre>
       </section>
       <section>
-        <p>タグ（要素）によってセマンティクスを</p>
-        <p>要素のネストによって構造を構築</p>
-      </section>
-      <section>
-        <h3>セマンティクスの恩恵</h3>
+        <p>タグ（要素）によってセマンティクスを<br />要素のネストによって構造を構築</p>
       </section>
       <section>
         <h3>HTMLの課題</h3>
@@ -107,11 +108,10 @@
       <section>
         <!-- ひとつずつスライドにしなくてもいいかな -->
         <ul>
-          <li>セマンティクスの変更 = DOMツリーの変更</li>
+          <li>セマンティクスの変更 👉 DOMツリーの変更</li>
           <li>UAスタイルシートとの密結合</li>
-          <li>新しいセマンティクス = 新しい要素</li>
+          <li>新しいセマンティクス 👉 新しい要素</li>
           <li>状態やプロパティの欠如</li>
-          <li>要素間の関係性が</li>
         </ul>
       </section>
       <section>
@@ -129,19 +129,27 @@
         <p><small>etc...</small></p>
       </section>
       <section>
-        <h2>WAI-ARIA</h2>
-        <p>Accessible Rich Internet Application</p>
-        <p>HTMLの抱える問題をアクセシビリティの面で解決する。</p>
+        <h2><abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr></h2>
+        <p class="u-taL">ウェブアプリケーションをアクセシブルにするため、HTML（ホスト言語）のセマンティクスを補強するための仕様</p>
+      </section>
+      <section>
+        <aside>
+          <em class="u-fwB">
+            <span class="u-fzL">&ldquo;</span>
+            ホスト言語のセマンティクスを補強する
+            <span class="u-fzL">&rdquo;</span>
+          </em>
+        </aside>
       </section>
       <section>
         <h3>特徴</h3>
         <ul>
-          <li>予め決められた属性による宣言的なセマンティクス</li>
-          <li>役割以外に状態やプロパティを持てる</li>
+          <li><em>属性</em>によってセマンティクスを付与</li>
+          <li><em>役割</em>や<em>状態</em>、<em>プロパティ</em>を持てる</li>
         </ul>
       </section>
       <section>
-        <dl>
+        <dl class="u-fzL">
           <dt><code>role</code></dt>
           <dd>役割</dd>
           <dt><code>aria-*</code></dt>
@@ -149,7 +157,167 @@
         </dl>
       </section>
       <section>
+        <div class="u-fzL">
+          <pre><code class="html">&lt;ul role=&quot;tree&quot; aria-label=&quot;menu tree&quot;&gt;
+  &lt;li role=&quot;treeitem&quot; aria-selected=&quot;true&quot;&gt;...&lt;/li&gt;
+  &lt;li role=&quot;treeitem&quot; aria-selected=&quot;false&quot;&gt;...&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      </div>
+      </section>
+      <section>
+        <h4>役割 : <code>role</code></h4>
+        <pre><code class="html">&lt;ul role=&quot;tree&quot;&gt;&lt;/ul&gt;</code></pre>
+        <p>これはツリーウィジェットである</p>
+      </section>
+      <section>
+        <h4>状態 : ステート</h4>
+        <pre><code class="html">&lt;li role=&quot;treeitem&quot; aria-selected=&quot;true&quot;&gt;...&lt;/li&gt;</code></pre>
+        <p>このツリーアイテムは選択されている（いない）</p>
+      </section>
+      <section>
+        <h4>プロパティ</h4>
+        <pre><code class="html">&lt;ul role=&quot;tree&quot; aria-label=&quot;menu tree&quot;&gt;&lt;/ul&gt;</code></pre>
+        <p>このツリーウィジェットの名前プロパティは<code class="u-dIb">menu tree</code>である</p>
+      </section>
+      <section>
         <h4>関係のセマンティクス</h4>
+        <p>DOMツリーに依存しない関係性を定義できる。</p>
+      </section>
+      <section>
+        <div class="u-taL u-fzS u-demo">
+          <label>パスワード: <input type="password" aria-describedby="description" /></label>
+          <p id="description">パスワードは8文字以上必要です。</p>
+        </div>
+        <pre><code class="html">&lt;label&gt;パスワード:
+  &lt;input type=&quot;password&quot; aria-describedby=&quot;description&quot; /&gt;
+&lt;/label&gt;
+&lt;p id=&quot;description&quot;&gt;パスワードは8文字以上必要です。&lt;/p&gt;
+</code></pre>
+      </section>
+      <section>
+        <h3>WAI-ARIAのユースケース</h3>
+      </section>
+      <section>
+        <h4>タブ</h4>
+        <p>同じ表示領域で内容が切り替わるウィジェット</p>
+        <ul>
+          <li class="fragment"><code>role=&quot;tablist&quot;</code></li>
+          <li class="fragment"><code>role=&quot;tab&quot;</code></li>
+          <li class="fragment"><code>role=&quot;tabpanel&quot;</code></li>
+          <li class="fragment"><code>aria-selected</code></li>
+          <li class="fragment"><code>aria-hidden</code></li>
+        </ul>
+      </section>
+      <section>
+          <h4>WAI-ARIAなし</h4>
+          <pre><code>&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;a href=&quot;#tabItem1&quot;&gt;越智&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&quot;#tabItem2&quot;&gt;桝田&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;div&gt;
+  &lt;div id=&quot;tabItem1&quot;&gt;キレ手&lt;/div&gt;
+  &lt;div id=&quot;tabItem2&quot;&gt;わかり手&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </section>
+        <section>
+          <h4>WAI-ARIAあり</h4>
+          <pre><code>&lt;nav&gt;
+    &lt;ul role=&quot;tablist&quot;&gt;
+      &lt;li role=&quot;presentation&quot;&gt;
+        &lt;a href=&quot;#tabItem1&quot;role=&quot;tab&quot; aria-controls=&quot;tabItem1&quot; aria-selected=&quot;true&quot; id=&quot;tabBtn1&quot;&gt;越智&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li role=&quot;presentation&quot;&gt;
+        &lt;a href=&quot;#tabItem2&quot;role=&quot;tab&quot; aria-controls=&quot;tabItem2&quot; aria-selected=&quot;false&quot; id=&quot;tabBtn2&quot;&gt;桝田&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+  &lt;div&gt;
+    &lt;div id=&quot;tabItem1&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tabBtn1&quot; aria-hidden=&quot;false&quot;&gt;キレ手&lt;/div&gt;
+    &lt;div id=&quot;tabItem2&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tabBtn2&quot; aria-hidden=&quot;true&quot;&gt;わかり手&lt;/div&gt;
+  &lt;/div&gt;</code></pre>
+        </section>
+        <section>
+          <h3>ライブリージョン</h3>
+          <p>更新される領域であることを支援技術に伝える</p>
+        </section>
+        <section>
+          <ul>
+            <li>チャット</li>
+            <li>株価表示ウィジェット</li>
+            <li>スポーツのテキスト実況</li>
+            <li>フォームの入力エラー</li>
+          </ul>
+          <p>etc...</p>
+        </section>
+        <section>
+            <h4>コメント欄</h4>
+            <pre><code class="html">&lt;div role=&quot;log&quot; aria-live=&quot;polite&quot;&gt;
+  &lt;ol&gt;
+    &lt;li&gt;魔界合宿&lt;/li&gt;
+    &lt;li&gt;「人はすぐ死ぬ」&lt;/li&gt;
+    &lt;li&gt;伊東家のこじらせ&lt;/li&gt;
+    &lt;li&gt;マスみがある&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+      <section>
+        <pre><code class="html">&lt;div role=&quot;log&quot; aria-live=&quot;polite&quot;&gt;
+  &lt;ol&gt;
+    &lt;li&gt;魔界合宿&lt;/li&gt;
+    &lt;li&gt;「人はすぐ死ぬ」&lt;/li&gt;
+    &lt;li&gt;伊東家のこじらせ&lt;/li&gt;
+    &lt;li&gt;マスみがある&lt;/li&gt;
+    &lt;li&gt;例え話下手くそ選手権優勝&lt;/li&gt; &lt;!-- New --&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+      <section>
+        <h3>ホスト言語との相互進化</h3>
+        <p>WAI-ARIAはホスト言語と相互に進化していく</p>
+        <div class="u-fzS">
+          <p>e.g. <code>role=&quot;swith&quot;</code> 👉 <code>input[type=&quot;switch&quot;]</code></p>
+          <ul>
+            <li><a href="https://github.com/whatwg/html/issues/4180">Requesting &lt;input type=&quot;switch&quot;&gt; · Issue #4180 · whatwg/html</a></li>
+            <li><a href="https://w3c.github.io/aria/#switch">Accessible Rich Internet Applications (WAI-ARIA) 1.2</a></li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h4>UAスタイルシートと疎（いるかなー）</h4>
+        <p>GoogleのWeb appsの例 or <code>progressbar</code>などの例</p>
+      </section>
+      <section>
+        <h3>WAI-ARIAのバッドケース</h3>
+        <p>TODO: 暗黙のセマンティクスの尊重とか重複を避ける話</p>
+      </section>
+      <section>
+        <h3>WAI-ARIAとDOM、レンダリングツリー、アクセシビリティツリー</h3>
+        <p>TODO</p>
+      </section>
+      <section>
+        <h3>WAI-ARIAの課題</h3>
+      </section>
+      <section>
+        <h4>セマンティクスがDOMに依存</h4>
+        <p>要素に属性として付与しないといけない</p>
+      </section>
+      <section>
+        <ul>
+          <li>DOMノード(要素)がないUIに関与できない<br />（e.g. <code>canvas</code>の中のUIなど</li>
+          <li class="fragment">関係属性から要素を参照する場合、要素に識別用の<code>id</code>が必要</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Accessibility Object Model</h2>
+        <p class="u-taL">アクセシビリティAPIに変換されうるセマンティクスをモデルとして定義しJavaScriptから操作・探索可能にしたもの</p>
+      </section>
+      <section>
 
       </section>
     </div>

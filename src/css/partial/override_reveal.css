@@ -95,9 +95,21 @@
   font-style: normal;
 }
 
+.reveal pre {
+  width: 100%;
+  box-shadow: none;
+}
+
 .reveal pre code {
   padding: 12px;
   max-height: 800px;
   font-size: 1.25em;
   line-height: 1.25;
+}
+
+.reveal textarea,
+.reveal input[type="text"],
+.reveal input[type="password"] {
+  font-size: 0.8em;
+  line-height: 1;
 }
