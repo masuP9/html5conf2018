@@ -82,15 +82,34 @@
       <section>
         <h2>セマンティクスの恩恵</h2>
         <p>ウェブがよりアクセシブルになる。</p>
+      </section>
+      <section>
+        <p></p>
         <ul>
-          <li>header要素による「前提情報」</li>
-          <li>footer要素による「補足情報」</li>
-          <li>aside要素による「関連情報」</li>
-          <li></li>
+          <li>テキストや画像が、どんな文脈で、どういう役割で示された情報なのかがわかる</li>
+          <li>特定の型の情報に直接アクセスできる</li>
+          <li>どういった構造体か俯瞰できる</li>
+          <li>どういった関連性があるか紐付けがわかる</li>
         </ul>
       </section>
       <section>
         <h2><abbr title="Hyper Text Markup Language">HTML</abbr></h2>
+      </section>
+      <section>
+        <h3>HTML5のセマンティクスは</h3>
+        <ul>
+          <li>section要素による「セクション」</li>
+          <li>main要素による「本文」</li>
+          <li>header要素による「前提」</li>
+          <li>footer要素による「補足」</li>
+          <li>figure要素による「図版」</li>
+        </ul>
+        <p><small>etc...</small></p>
+      </section>
+      <section>
+        <p>HTML4時代の要素の刷新・廃止</p>
+        <p>「セクション」という概念の導入により、見出しの及ぶ範囲が規定された</p>
+        <p>フレージングが強化されて、強調、細目、時間表現が可能になった</p>
       </section>
       <section>
         <h3>HTMLによる宣言的なセマンティクス</h3>
@@ -124,7 +143,35 @@
         <p>非同期通信で画面が書き換わるウェブアプリケーションなウェブサイトが広まり、現状のHTMLのネイティブセマンティクスでは足りなくなっている</p>
       </section>
       <section>
-        <!-- いらないかもだけど -->
+        <h3>HTMLも進化を続ける</h3>
+      </section>
+      <section>
+        <h4>dialog要素</h4>
+        <p>モーダルなダイアログをHTML要素で表現できる。</p>
+        <p>W3CではHTML5.2で勧告済み。</p>
+        <p>しかしブラウザ対応はGoogle ChromeとOperaのみ。Firefoxはフラグ立てると利用可能。他は未対応。</p>
+        <p>当然ながらIE11では（dialog要素に限らず新しい実装がのることはないので）非対応。</p>
+      </section>
+      <section>
+        <h4>hgroup要素</h4>
+        <p>見出しに説明をつけて補強するリードのようなもの、副見出し、キャッチコピー、スローガンなどをマークアップできる。</p>
+        <pre><code class="html">&lt;hgroup&gt;
+  &lt;h1&gt;deisui_html_radio #sp1&lt;/h1&gt;
+  &lt;h2&gt;〜マークアップは裏切らない〜&lt;/h2&gt;
+&lt;/hgroup&gt;</code></pre>
+        <p>W3Cからは削除されたが、WHATWGでは仕様は残りつづけている。</p>
+        <p>IE11、Edge含む全てのブラウザで対応済み</p>
+        <p>きっと復権するはず！！！</p>
+      </section>
+      <section>
+        <h4>まだ見ぬ要素</h4>
+        <p>タブ…</p>
+        <p>アコーディオン…</p>
+        <p>ドロワー…</p>
+        <p>time要素があるならtel要素があってもいいんじゃないの…</p>
+        <p></p>
+      </section>
+      <section>
         <p>HTML以外のセマンティクスと言えば？</p>
         <ul>
           <li>XHTML</li>
@@ -135,13 +182,16 @@
         <p><small>etc...</small></p>
       </section>
       <section>
-        <p>確かにこれらはHTMLにないセマンティクスを提供するが、どちらかというとデータ構造を俯瞰したものを提供する力が強い。</p>
         <ul>
           <li>パンくずリスト（ページ階層情報）</li>
           <li>記事リスト（カテゴリトップから見て、そのカテゴリに属する記事ものの一覧）</li>
           <li>レビュー情報</li>
         </ul>
-        <p>そのウェブページ上で利用するというよりは、外部ツールがパースして使われるシーンが多い。</p>
+        <p>確かにこれらは現在のHTMLにないセマンティクスを提供するが、どちらかというとデータ構造を俯瞰したものを提供する力が強い。</p>
+        <p>なのでそのウェブページ上で利用するというよりは、外部ツール（検索エンジン）がパースしてそのウェブページの外で使われている。</p>
+      </section>
+      <section>
+        <p>やりたいのはそのウェブページ自体のセマンティクスの強化なんだよ！！！</p>
       </section>
       <section>
         <h2>そこで<abbr title="Accessible Rich Internet Application">WAI-ARIA</abbr></h2>
@@ -327,27 +377,6 @@
           <li>DOMノード(要素)がないUIに関与できない<br />（e.g. <code>canvas</code>の中のUIなど</li>
           <li class="fragment">関係属性から要素を参照する場合、要素に識別用の<code>id</code>が必要</li>
         </ul>
-      </section>
-      <section>
-        <h3>HTMLにも未来はあります</h3>
-      </section>
-      <section>
-        <h4>dialog要素</h4>
-        <p>モーダルなダイアログをHTML要素で表現できる。</p>
-        <p>W3CではHTML5.2で勧告済み。</p>
-        <p>しかしブラウザ対応はGoogle ChromeとOperaのみ。Firefoxはフラグ立てると利用可能。他は未対応。</p>
-        <p>当然ながらIE11では（dialog要素に限らず新しい実装がのることはないので）非対応。</p>
-      </section>
-      <section>
-        <h4>hgroup要素</h4>
-        <p>見出しを説明を補強するような、副見出し、キャッチコピー、スローガンなどをマークアップできる</p>
-        <pre><code class="html">&lt;hgroup&gt;
-  &lt;h1&gt;deisui_html_radio #18&lt;/h1&gt;
-  &lt;h2&gt;〜マークアップは裏切らない〜&lt;/h2&gt;
-&lt;/hgroup&gt;</code></pre>
-        <p>W3Cからは削除されたが、WHATWGでは仕様は残りつづけている。</p>
-        <p>IE11、Edge含む全てのブラウザで対応済み</p>
-        <p>きっと復権するはず！！！</p>
       </section>
       <section>
         <h2>Accessibility Object Model</h2>
