@@ -420,16 +420,153 @@
       </section>
       <section>
         <h2>Accessibility Object Model</h2>
-        <p class="u-taL">アクセシビリティAPIに変換されうるセマンティクスをモデルとして定義しJavaScriptから操作・探索可能にしたもの</p>
+        <p class="u-taL">アクセシビリティAPIに変換されうるセマンティクスをモデルとして定義しJavaScriptから操作・探索可能にしたもの（ないしは提案）</p>
       </section>
       <section>
+        <h3>IDLインターフェースから<br />ARIA属性を反映する</h3>
+        <pre><code class="JavaScript">const tree = document.createElement('ul');
+tree.role = 'tree';
+tree.ariaLabel = 'menu tree';</code></pre>
+      </section>
+      <section>
+        <h4>Demo</h4>
+        <p data-height="371" data-theme-id="dark" data-slug-hash="wQjqWr" data-default-tab="js,result" data-user="masuP9" data-pen-title="Demo: AOM Reflecting ARIA attributes" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/wQjqWr/">Demo: AOM Reflecting ARIA attributes</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+      </section>
+      <section>
+        <h3>Out-of-date syntax</h3>
+        <pre><code class="javascript">tree.accessibleNode.role = &quot;tree&quot;;
+tree.accessibleNode.label = &quot;menu tree&quot;;</code></pre>
+      </section>
+      <section>
+        <h3>DOMに反映されないARIAを付与する</h3>
+        <p>TODO:</p>
+      </section>
+      <section>
+        <h3>支援技術からのイベントに対応</h3>
+        <p class="u-taL">支援技術が起こすイベントをDOMのイベントに<br>ルーティングしハンドリングすることができるようにする。</p>
+      </section>
+      <section>
+        <h4>支援技術からのイベントのルーティング</h4>
+        <p>(例: VoiceOver の Click</p>
+        <ol>
+          <li class="fragment">VoiceOverユーザーはある要素上で<kbd class="u-dIb"><kbd>control</kbd> + <kbd>option</kbd> + <kbd>スペース</kbd></kbd>を同時に押す</li>
+          <li class="fragment">VoiceOverは該当のアクセシビリティノード上で <code>accessibilityPerformPress()</code> を実行する</li>
+          <li class="fragment">ブラウザが <code>click</code> イベントにルーティングする</li>
+          <li class="fragment">要素上で <code>onclick</code> イベントが発火する</li>
+        </ol>
+      </section>
+      <section>
+        <button type="button" onclick="alert('click!')" style="font-size: 4em;padding: 0 1em;border-radius: 100em;">button</button>
+        <pre><code class="html">&lt;button type=&quot;button&quot; onclick=&quot;alert('click!')&quot;&gt;button&lt;/button&gt;</code></pre>
+      </section>
+      <section>
+        <p>現状、支援技術のイベントをルーティングするにはDOMのイベントが足りない。</p>
+        <div class="u-fzS fragment">
+          <p class="u-mb4"><code>role=&quot;slider&quot;</code>の増加/減少イベントなど</p>
+          <ul>
+            <li><a href="https://developer.apple.com/documentation/appkit/nsaccessibilityslider/1528478-accessibilityperformincrement?language=objc"><code>accessibilityPerformIncrement</code></a></li>
+            <li><a href="https://developer.apple.com/documentation/appkit/nsaccessibilityslider/1534967-accessibilityperformdecrement?language=objc"><code>accessibilityPerformDecrement</code></a></li>
+          </ul>
+          <p class="u-mt20"><code>&lt;input type=&quot;range&quot; /&gt;要素上のみハンドリング可能</code></p>
+        </div>
+      </section>
+      <section>
+        <h4>(動かない)Demo</h4>
+        <p data-height="265" data-theme-id="dark" data-slug-hash="WYJZaN" data-default-tab="js,result" data-user="masuP9" data-pen-title="Demo: Listen for input events from AT" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/WYJZaN/">Demo: Listen for input events from AT</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+      </section>
+      <section>
+        <h4>Out-of-date syntax</h4>
+        <pre><code class="javascript">element.accessibleNode.addEventListener('accessibleclick', function);
+element.addEventListener('accessibleclick', function);</code></pre>
+      </section>
+      <section>
+        <ul>
+          <li>支援技術を利用しているということは重大なプライバシーの問題？</li>
+          <li class="fragment">支援技術のイベント全てを汎用のイベントにルーティングすることができるのか？</li>
+          <li class="fragment">利便性とプライバシーのトレードオフ</li>
+          <li class="fragment">位置情報などと同じく許可ベースにするという議論も</li>
+        </ul>
+        <p><small>現在は実験的な実装もどれも動かなくなっている</small></p>
+      </section>
+      <section>
+        <h3>Virtual Accessibility Node</h3>
+        <p>TODO</p>
+      </section>
+      <section>
+        <h3>Query Computed Accessibility Tree</h3>
+        <p>TODO</p>
+      </section>
+      <section>
+        <h3>Can I use AOM</h3>
+        <table id="can-i-use-table" style="font-size: 0.75em;width: 100%;">
+          <thead>
+            <tr>
+              <th></th>
+              <th scope="col">Chrome 70</th>
+              <th scope="col">Firefox <abbr title="Nightly Build">NB</abbr><sup aria-describedby="can-i-use-footnote-firefox-nb">*1</sup></th>
+              <th scope="col">Safari <abbr title="Technology Preview">TP</abbr><sup aria-describedby="can-i-use-footnote-safari-tp">*2</sup></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <span class="u-dB u-fwN u-fzS">Reflect ARIA attributes</span>
+              </th>
+              <td>Yes<sup aria-describedby="can-i-use-footnote-remain-out-of-syntax">*3</sup> <sup aria-describedby="can-i-use-footnote-many-bugs">*4</sup></td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="u-dB u-fwN u-fzS">Listen for input events from AT</span>
+              </th>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="u-dB u-fwN u-fzS">Build virtual accessible nodes</span>
+              </th>
+              <td>Yes</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <span class="u-dB u-fwN u-fzS">Query computed accessibility tree</span>
+              </th>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Yes <sup>*5</sup></td>
+            </tr>
+          </tbody>
+        </table>
+        <footer>
+          <ol style="font-size: 0.625em;" class="u-taL u-dB u-mt24">
+            <li id="can-i-use-footnote-firefox-nb">65.0a1 (2018-11-23) (64 bit)</li>
+            <li id="can-i-use-footnote-safari-tp">Release 70 (Safari 12.1, WebKit 13607.1.13)</li>
+            <li id="can-i-use-footnote-remain-out-of-syntax">一部古い記法の対応が残る</li>
+            <li id="can-i-use-footnote-many-bugs">バグが多い😭</li>
+            <li id="can-i-use-footnote-only-out-of-syntax">古い記法による対応</li>
+          </ol>
+        </footer>
+        <style>
+          #can-i-use-table th {
+            white-space: nowrap;
+          }
 
+          #can-i-use-table td {
+            text-align: center;
+          }
+        </style>
       </section>
     </div>
   </div>
 
   <script src="lib/js/head.min.js"></script>
   <script src="js/reveal.js"></script>
+  <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
   <script>
     // More info about config & dependencies:
