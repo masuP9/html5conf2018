@@ -686,6 +686,13 @@ element.addEventListener('accessibleclick', function);</code></pre>
         <p><code>canvas</code>などで作られたUIに対して仮想のアクセシビリティノードを付与する。</p>
       </section>
       <section>
+        <pre><code class="javascript">const canvas = document.getElementById('canvas');
+canvas.attachAccessibleRoot();
+
+const table = canvas.accessibleRoot.appendChild(new AccessbleNode());
+table.role = 'table';</code></pre>
+      </section>
+      <section>
         <h4>Demo: Build virtual accessible nodes <small class="u-dIb">out of date syntax</small></h4>
         <p data-height="399" data-theme-id="dark" data-slug-hash="pQVVeO" data-default-tab="js,result" data-user="masuP9" data-pen-title="Demo: Build virtual accessible nodes out-of-date syntax" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/pQVVeO/">Demo: Build virtual accessible nodes out-of-date syntax</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
       </section>
@@ -702,7 +709,58 @@ element.addEventListener('accessibleclick', function);</code></pre>
       </section>
       <section>
         <h3>Query Computed Accessibility Tree</h3>
-        <p>TODO</p>
+        <p>計算されたアクセシビリティツリーを確かめる。</p>
+      </section>
+      <section>
+        <pre><code class="javascript">const tree = document.createElement('ul');
+tree.role = 'tree';
+window.getComputedAccessibleNode(tree).then(result =&gt; {
+  console.log(result.role); // 👉 'tree';
+});
+</code></pre>
+      <p>非同期で取得する</p>
+      </section>
+      <section>
+        <h4>Demo</h4>
+        <p data-height="265" data-theme-id="dark" data-slug-hash="zMjLYE" data-default-tab="js,result" data-user="masuP9" data-pen-title="Demo: Query computed Accessible Tree" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/zMjLYE/">Demo: Query computed Accessible Tree</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+      </section>
+      <section>
+        <h4>Use case</h4>
+        <ul>
+          <li>アクセシビリティツリーの自動テスト</li>
+          <li>ブラウザ拡張機能による支援技術</li>
+        </ul>
+      </section>
+      <section>
+        <h3>AccessibleNode はどうなった？</h3>
+        <p>当初はDOMの<code>Element</code>に関連付けられた<code>AccessibleNode</code>からプロパティを<br>読み書きする方針だった</p>
+      </section>
+      <section>
+        <p>以下のような問題があり、AccessibleNode ではなく簡素なAPIへの提案へ以降</p>
+        <ul>
+          <li>パフォーマンス</li>
+          <li>アクセシビリティツリー計算方法の標準化</li>
+          <li>ARIAプロパティとAccessibleNodeプロパティの優先順位</li>
+        </ul>
+      </section>
+      <section>
+        <ul>
+          <li>アクセシビリティツリーは、レンダリングツリーにARIAなどが反映されて計算される。</li>
+          <li class="fragment">計算済のアクセシビリティツリーを取得するには多くの計算が必要。</li>
+          <li class="fragment">アクセシビリティツリーの計算方法も各ブラウザによって少しずつ異なる...</li>
+        </ul>
+      </section>
+      <section>
+        <div class="u-fzL">
+          <pre><code class="javascript">element.accessibleNode.role = 'tree';
+console.log(element.accessibleNode.role) // 'tree' 🤔</code></pre>
+        </div>
+        <p>単純な参照では無い。</p>
+      </section>
+      <section>
+        <p>書き込みと読み取りを共通化しない</p>
+        <pre><code class="javascript">element.role = 'tree';
+window.getComputedAccessibleNode(element).then(result =&gt; {});</code></pre>
       </section>
       <section>
         <h3>Can I use AOM</h3>
@@ -745,18 +803,19 @@ element.addEventListener('accessibleclick', function);</code></pre>
                 <span class="u-dB u-fwN u-fzS">Query computed accessibility tree</span>
               </th>
               <td>Yes</td>
+              <td>No <sup aria-describedby="can-i-use-footnote-only-accessible-node">*6</sup></td>
               <td>No</td>
-              <td>Yes <sup aria-describedby="can-i-use-footnote-only-out-of-syntax">*5</sup></td>
             </tr>
           </tbody>
         </table>
         <footer>
-          <ol style="font-size: 0.625em;" class="u-taL u-dB u-mt24">
+          <ol style="font-size: 0.55em;" class="u-taL u-dB u-mt24">
             <li id="can-i-use-footnote-firefox-nb">65.0a1 (2018-11-23) (64 bit)</li>
             <li id="can-i-use-footnote-safari-tp">Release 70 (Safari 12.1, WebKit 13607.1.13)</li>
             <li id="can-i-use-footnote-remain-out-of-syntax">一部古い記法の対応が残る</li>
             <li id="can-i-use-footnote-many-bugs">バグが多い😭</li>
             <li id="can-i-use-footnote-only-out-of-syntax">古い記法による対応</li>
+            <li id="can-i-use-footnote-only-accessible-node"><code>element.AccessibleNode</code>のみ存在</li>
           </ol>
         </footer>
         <style>
@@ -768,6 +827,10 @@ element.addEventListener('accessibleclick', function);</code></pre>
             text-align: center;
           }
         </style>
+      </section>
+      <section>
+        <p>主なターゲットは、ライブラリやウェブコンポーネントのオーサー</p>
+        <p>またはウェブの可能性を広げるようなアプリの開発者</p>
       </section>
     </div>
   </div>
