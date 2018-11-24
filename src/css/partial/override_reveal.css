@@ -95,6 +95,10 @@
   font-style: normal;
 }
 
+.reveal strong {
+  text-emphasis: sesame var(--color__accent);
+}
+
 .reveal pre {
   width: 100%;
   box-shadow: none;
