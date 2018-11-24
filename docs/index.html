@@ -579,11 +579,26 @@ element.addEventListener('accessibleclick', function);</code></pre>
           <li class="fragment">利便性とプライバシーのトレードオフ</li>
           <li class="fragment">位置情報などと同じく許可ベースにするという議論も</li>
         </ul>
-        <p><small>現在は実験的な実装もどれも動かなくなっている</small></p>
+        <p class="fragment"><small>現在は実験的な実装もどれも動かなくなっている</small></p>
       </section>
       <section>
         <h3>Virtual Accessibility Node</h3>
-        <p>TODO</p>
+        <p><code>canvas</code>などで作られたUIに対して仮想のアクセシビリティノードを付与する。</p>
+      </section>
+      <section>
+        <h4>Demo: Build virtual accessible nodes <small class="u-dIb">out of date syntax</small></h4>
+        <p data-height="399" data-theme-id="dark" data-slug-hash="pQVVeO" data-default-tab="js,result" data-user="masuP9" data-pen-title="Demo: Build virtual accessible nodes out-of-date syntax" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/pQVVeO/">Demo: Build virtual accessible nodes out-of-date syntax</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+      </section>
+      <section>
+        <figure>
+          <figcaption>Screen shot Virtual Accessibility Tree(Chrome 70)</figcaption>
+          <img src="./assets/screenshot_virtual_a11y_node.png" alt="Accessibility Treeインスペクタのスクリーンショット。Canvasを起点に heading と list, listitem がテキストノードを持ってAccessibility Treeに表示されている。" />
+        </figure>
+      </section>
+      <section>
+        <p class="u-taL">仮想ノードを操作するためフォーカス可能なプロパティとイベントを付与する方法が提案されているが…</p>
+        <p class="fragment u-taL">仮想ノードにアクセスがあった時点で支援技術ユーザーだということがブラウザに伝わる？</p>
+        <p class="fragment u-taL">現時点では仮想ノードは構築できても、仮想ノードへのフォーカスまでは実装されていない</p>
       </section>
       <section>
         <h3>Query Computed Accessibility Tree</h3>
@@ -621,7 +636,7 @@ element.addEventListener('accessibleclick', function);</code></pre>
               <th scope="row">
                 <span class="u-dB u-fwN u-fzS">Build virtual accessible nodes</span>
               </th>
-              <td>Yes</td>
+              <td>Yes <sup aria-describedby="can-i-use-footnote-only-out-of-syntax">*5</sup></td>
               <td>No</td>
               <td>No</td>
             </tr>
@@ -631,7 +646,7 @@ element.addEventListener('accessibleclick', function);</code></pre>
               </th>
               <td>Yes</td>
               <td>No</td>
-              <td>Yes <sup>*5</sup></td>
+              <td>Yes <sup aria-describedby="can-i-use-footnote-only-out-of-syntax">*5</sup></td>
             </tr>
           </tbody>
         </table>
