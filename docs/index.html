@@ -168,10 +168,24 @@
       </section>
       <section>
         <h4>dialog要素</h4>
-        <p>モーダルなダイアログをHTML要素で表現できる。</p>
-        <p>W3CではHTML5.2で勧告済み。</p>
-        <p>しかしブラウザ対応はGoogle ChromeとOperaのみ。Firefoxはフラグ立てると利用可能。他は未対応。</p>
-        <p>当然ながらIE11では（dialog要素に限らず新しい実装がのることはないので）非対応。</p>
+        <p>モーダルなダイアログをHTML要素で表現できる</p>
+        <pre><code class="html">&lt;button id="confirm"&gt;確認&lt;/button&gt;
+
+&lt;dialog id="privacy-policy"&gt;
+  &lt;h1&gt;プライバシーポリシー&lt;/h1&gt;
+  &lt;p&gt;同意せよ&lt;/p&gt;
+  &lt;button id="agree"&gt;同意します&lt;/button&gt;
+&lt;/dialog&gt;
+</code></pre>
+      </section>
+      <section>
+        <ul>
+          <li>W3CではHTML5.2で勧告済み</li>
+          <li>当然<a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element" target="_blank">WHATWGにも仕様はある</a></li>
+          <li>表示切り替えにはJavaScriptによる制御が必要</li>
+          <li>ブラウザ対応はGoogle ChromeとOperaのみ</li>
+          <li><a href="https://caniuse.com/#feat=dialog" target="_blank">Firefox 53からはフラグ立てると利用可能。他は未対応</a></li>
+        </ul>
       </section>
       <section>
         <h4>hgroup要素</h4>
