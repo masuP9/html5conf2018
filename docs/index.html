@@ -398,12 +398,105 @@
         </div>
       </section>
       <section>
-        <h3>WAI-ARIAのバッドケース</h3>
-        <p>TODO: 暗黙のセマンティクスの尊重とか重複を避ける話</p>
+        <h3>ネイティブセマンティクスの尊重</h3>
+        <p>WAI-ARIAは<em>補強</em>するもので<strong>代替では無い</strong></p>
       </section>
       <section>
-        <h3>WAI-ARIAとDOM、レンダリングツリー、アクセシビリティツリー</h3>
-        <p>TODO</p>
+        <figure>
+          <figcaption class="u-taL">😠DON'T</figcaption>
+          <pre><code class="html"><div role="button"></div></code></pre>
+        </figure>
+        <figure>
+          <figcaption class="u-taL">😍DO</figcaption>
+          <pre><code class="html"><button></button></code></pre>
+        </figure>
+      </section>
+      <section>
+        <p>これらの付与されたセマンティクスはどのようにユーザー（支援技術）に伝わるか</p>
+      </section>
+      <section>
+        <h3>アクセシビリティ<abbr title="Application Programing Interface">API</abbr></h3>
+        <p>OSが支援技術にセマンティクスなどの<br>情報を伝えるAPI</p>
+      </section>
+      <section>
+        <p>ブラウザがレンダリングしているコンテンツを<br>アクセシビリティAPIのオブジェクトに変換して<br>支援技術に伝える</p>
+      </section>
+      <section>
+        <figure>
+          <svg width="961" height="609" viewBox="0 0 961 609" role="img">
+            <g fill="none" fill-rule="evenodd" font-weight="bold">
+              <g>
+                <rect width="297" height="606" fill="#FFF" stroke="#333" stroke-width="3" />
+                <text fill="#333" font-size="32" x="85" y="96">
+                  ブラウザ
+                </text>
+                <g class="fragment">
+                  <g>
+                    <rect width="121" height="44" x="128" y="344" stroke="#333" stroke-width="2" />
+                    <text fill="#333" font-size="28" x="145" y="377">
+                      HTML
+                    </text>
+                  </g>
+                  <text fill="#333" font-size="28" x="127" y="327">
+                    DOM
+                  </text>
+                  <rect width="174" height="111" x="102" y="291" stroke="#333" stroke-width="2" />
+                </g>
+                <g class="fragment">
+                  <rect width="174" height="58" x="102" y="474" stroke="#333" stroke-width="2" />
+                  <text fill="#333" font-size="28" x="160" y="512">
+                    CSS
+                  </text>
+                </g>
+                <g transform="translate(102 170)" class="fragment">
+                  <rect width="174" height="58" stroke="#333" stroke-width="2" />
+                  <text fill="#333" font-size="28">
+                    <tspan x="31" y="38">WAI-ARIA</tspan>
+                  </text>
+                </g>
+                <g transform="translate(16 216)" class="fragment">
+                  <rect width="55" height="230" stroke="#333" stroke-width="2" />
+                  <text fill="#333" font-size="28" x="27" y="105" style="writing-mode: vertical-rl;">
+                    JS
+                  </text>
+                </g>
+                <g class="fragment">
+                  <path fill="#333" fill-rule="nonzero" d="M28.1149867,-1 L14.7694775,-8.50684893 L13.0263264,-9.48737141 L14.9873714,-12.9736736 L16.7305225,-11.9931511 L36.7305225,-0.743151074 L39.8294577,1 L36.7305225,2.74315107 L16.7305225,13.9931511 L14.9873714,14.9736736 L13.0263264,11.4873714 L14.7694775,10.5068489 L28.1149867,3 L15.75,3 L0.352657057,3 L-1.64734294,3 L-1.64734294,-1 L0.352657057,-1 L15.75,-1 L28.1149867,-1 Z"
+                    transform="translate(75 345)" />
+                  <path fill="#333" fill-rule="nonzero" d="M20.6656003,3.85862962 L5.92075648,7.98718589 L3.99482844,8.52644574 L2.91630874,4.67458967 L4.84223678,4.13532981 L26.9393237,-2.05185452 L30.3631958,-3.0105387 L29.4045116,0.41333337 L23.2173272,22.5104203 L22.6780674,24.4363483 L18.8262113,23.3578286 L19.3654712,21.4319006 L23.4940274,6.68705674 L14.7506615,15.4304227 L1.76687062,28.4142136 L0.352657057,29.8284271 L-2.47577007,27 L-1.06155651,25.5857864 L11.9222344,12.6019956 L20.6656003,3.85862962 Z"
+                    transform="translate(75 212)" />
+                </g>
+                <g class="fragment">
+                  <text fill="#333" font-size="56" font-weight="300" x="170" y="455">
+                    +
+                  </text>
+                  <text fill="#333" font-size="56" font-weight="300" x="170" y="277">
+                    +
+                  </text>
+                </g>
+              </g>
+              <g class="fragment">
+                <rect width="300" height="150" x="362" y="230" fill="#FFF" stroke="#333" />
+                <path fill="#FFF" d="M6.38501328,2.5 L19.7305225,10.0068489 L21.4736736,10.9873714 L19.5126286,14.4736736 L17.7694775,13.4931511 L-2.23052248,2.24315107 L-5.32945772,0.5 L-2.23052248,-1.24315107 L17.7694775,-12.4931511 L19.5126286,-13.4736736 L21.4736736,-9.98737141 L19.7305225,-9.00684893 L6.38501328,-1.5 L18.75,-1.5 L41.25,-1.5 L53.6149867,-1.5 L40.2694775,-9.00684893 L38.5263264,-9.98737141 L40.4873714,-13.4736736 L42.2305225,-12.4931511 L62.2305225,-1.24315107 L65.3294577,0.5 L62.2305225,2.24315107 L42.2305225,13.4931511 L40.4873714,14.4736736 L38.5263264,10.9873714 L40.2694775,10.0068489 L53.6149867,2.5 L41.25,2.5 L18.75,2.5 L6.38501328,2.5 Z"
+                  transform="translate(300 304)" />
+                <text fill="#333" font-size="28">
+                  <tspan x="484" y="298">OS</tspan>
+                  <tspan x="398" y="326" font-size="24">アクセシビリティ</tspan>
+                  <tspan>API</tspan>
+                </text>
+              </g>
+              <g class="fragment">
+                <rect width="300" height="150" x="717" y="230" fill="#FFF" stroke="#333" />
+                <path fill="#FFF" d="M7.38501328,3.5 L20.7305225,11.0068489 L22.4736736,11.9873714 L20.5126286,15.4736736 L18.7694775,14.4931511 L-1.23052248,3.24315107 L-4.32945772,1.5 L-1.23052248,-0.243151074 L18.7694775,-11.4931511 L20.5126286,-12.4736736 L22.4736736,-8.98737141 L20.7305225,-8.00684893 L7.38501328,-0.5 L19.75,-0.5 L38.25,-0.5 L50.6149867,-0.5 L37.2694775,-8.00684893 L35.5263264,-8.98737141 L37.4873714,-12.4736736 L39.2305225,-11.4931511 L59.2305225,-0.243151074 L62.3294577,1.5 L59.2305225,3.24315107 L39.2305225,14.4931511 L37.4873714,15.4736736 L35.5263264,11.9873714 L37.2694775,11.0068489 L50.6149867,3.5 L38.25,3.5 L19.75,3.5 L7.38501328,3.5 Z"
+                  transform="translate(659 303)" />
+                <text fill="#333" font-size="32" x="775" y="317">
+                  支援技術
+                </text>
+              </g>
+            </g>
+          </svg>
+          <figcaption style="font-size: 0.5em;">ブラウザがコンテンツやセマンティクスを支援技術に伝えるまで</figcaption>
+        </figure>
       </section>
       <section>
         <h3>WAI-ARIAの課題</h3>
