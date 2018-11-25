@@ -731,7 +731,7 @@ element.addEventListener('accessibleclick', function);</code></pre>
         <pre><code class="javascript">const canvas = document.getElementById('canvas');
 canvas.attachAccessibleRoot();
 
-const table = canvas.accessibleRoot.appendChild(new AccessbleNode());
+const table = canvas.accessibleRoot.appendChild(new AccessibleNode());
 table.role = 'table';</code></pre>
       </section>
       <section>
@@ -764,7 +764,7 @@ window.getComputedAccessibleNode(tree).then(result =&gt; {
       </section>
       <section>
         <h4>Demo</h4>
-        <p data-height="265" data-theme-id="dark" data-slug-hash="zMjLYE" data-default-tab="js,result" data-user="masuP9" data-pen-title="Demo: Query computed Accessible Tree" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/zMjLYE/">Demo: Query computed Accessible Tree</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+        <p data-height="265" data-theme-id="dark" data-slug-hash="aQGrrL" data-default-tab="html,result" data-user="masuP9" data-pen-title="Demo: Query computed Accessible Tree table display: block; table" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/aQGrrL/">Demo: Query computed Accessible Tree table display: block; table</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
       </section>
       <section>
         <h4>Use case</h4>
@@ -795,7 +795,7 @@ window.getComputedAccessibleNode(tree).then(result =&gt; {
       <section>
         <div class="u-fzL">
           <pre><code class="javascript">element.accessibleNode.role = 'tree';
-console.log(element.accessibleNode.role) // 'tree' 🤔</code></pre>
+console.log(element.accessibleNode.role) // 本当に 'tree' 🤔</code></pre>
         </div>
         <p>単純な参照では無い。</p>
       </section>
