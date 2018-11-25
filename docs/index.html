@@ -606,7 +606,7 @@
         <ul>
           <li>DOMノード(要素)がないUIに関与できない<br />（e.g. <code>canvas</code>の中のUIなど</li>
           <li class="fragment">関係属性から要素を参照する場合、要素に識別用の<code>id</code>が必要</li>
-          <li>アクセシビリティツリーに影響を及ぼすが、結果どうなったかを確認できない</li>
+          <li class="fragment">アクセシビリティツリーに影響を及ぼすが、結果どうなったかを確認できない</li>
         </ul>
       </section>
       <section>
@@ -622,7 +622,7 @@ tree.ariaLabel = 'menu tree';</code></pre>
         </div>
       </section>
       <section>
-        <h4>関係属性も</h4>
+        <h4>関係のセマンティクスも</h4>
         <div class="u-fzL">
           <pre><code class="javascript">const desc = document.querySelectorAll('.tree-desc');
 tree.ariaDescribedBy = [...desc].map(el =&gt; el.id).join(' ');</code></pre>
@@ -630,7 +630,7 @@ tree.ariaDescribedBy = [...desc].map(el =&gt; el.id).join(' ');</code></pre>
       </section>
       <section>
         <h4>Demo</h4>
-        <p data-height="371" data-theme-id="dark" data-slug-hash="wQjqWr" data-default-tab="js,result" data-user="masuP9" data-pen-title="Demo: AOM Reflecting ARIA attributes" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/wQjqWr/">Demo: AOM Reflecting ARIA attributes</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+        <p data-height="320" data-theme-id="dark" data-slug-hash="wQjqWr" data-default-tab="js,result" data-user="masuP9" data-pen-title="Demo: AOM Reflecting ARIA attributes" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/wQjqWr/">Demo: AOM Reflecting ARIA attributes</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
       </section>
       <section>
         <h3>Out-of-date syntax</h3>
@@ -671,7 +671,7 @@ customElements.define(
         </div>
       </section>
       <section>
-        <p>Web Components周りは<code>shadowRoot</code>を超える超えないで議論中...</p>
+        <p>Web Componentsでの<code>shadowRoot</code>問題</p>
         <ul class="u-fzS">
           <li><a href="https://github.com/w3c/webcomponents/issues/758">How to define APIs only for custom element authors · Issue #758 · w3c/webcomponents</a></li>
         </ul>
@@ -680,7 +680,7 @@ customElements.define(
         <h3>支援技術からのイベントに対応</h3>
         <p class="u-taL">支援技術が起こすイベントをDOMのイベントに<br>ルーティングしハンドリングすることができるようにする。</p>
       </section>
-      <section>
+<!--       <section>
         <h4>支援技術からのイベントのルーティング</h4>
         <p>(例: VoiceOver の Click</p>
         <ol>
@@ -689,7 +689,7 @@ customElements.define(
           <li class="fragment">ブラウザが <code>click</code> イベントにルーティングする</li>
           <li class="fragment">要素上で <code>onclick</code> イベントが発火する</li>
         </ol>
-      </section>
+      </section> -->
       <section>
         <button type="button" onclick="alert('click!')" style="font-size: 4em;padding: 0 1em;border-radius: 100em;">button</button>
         <pre><code class="html">&lt;button type=&quot;button&quot; onclick=&quot;alert('click!')&quot;&gt;button&lt;/button&gt;</code></pre>
@@ -707,7 +707,7 @@ customElements.define(
       </section>
       <section>
         <h4>(動かない)Demo</h4>
-        <p data-height="265" data-theme-id="dark" data-slug-hash="WYJZaN" data-default-tab="js,result" data-user="masuP9" data-pen-title="Demo: Listen for input events from AT" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/WYJZaN/">Demo: Listen for input events from AT</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+        <p data-height="320" data-theme-id="dark" data-slug-hash="WYJZaN" data-default-tab="js,result" data-user="masuP9" data-pen-title="Demo: Listen for input events from AT" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/WYJZaN/">Demo: Listen for input events from AT</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
       </section>
       <section>
         <h4>Out-of-date syntax</h4>
@@ -715,13 +715,16 @@ customElements.define(
 element.addEventListener('accessibleclick', function);</code></pre>
       </section>
       <section>
-        <ul>
-          <li>支援技術を利用しているということは重大なプライバシーの問題？</li>
-          <li class="fragment">支援技術のイベント全てを汎用のイベントにルーティングすることができるのか？</li>
-          <li class="fragment">利便性とプライバシーのトレードオフ</li>
-          <li class="fragment">位置情報などと同じく許可ベースにするという議論も</li>
-        </ul>
-        <p class="fragment"><small>現在は実験的な実装もどれも動かなくなっている</small></p>
+        <p>プライバシーの問題</p>
+        <aside class="notes">
+          <ul>
+            <li>支援技術を利用しているということは重大なプライバシーの問題？</li>
+            <li>支援技術のイベント全てを汎用のイベントにルーティングすることができるのか？</li>
+            <li>利便性とプライバシーのトレードオフ</li>
+            <li>位置情報などと同じく許可ベースにするという議論も</li>
+          </ul>
+          <p><small>現在は実験的な実装もどれも動かなくなっている</small></p>
+        </aside>
       </section>
       <section>
         <h3>Virtual Accessibility Node</h3>
@@ -745,9 +748,12 @@ table.role = 'table';</code></pre>
         </figure>
       </section>
       <section>
-        <p class="u-taL">仮想ノードを操作するためフォーカス可能なプロパティとイベントを付与する方法が提案されているが…</p>
-        <p class="fragment u-taL">仮想ノードにアクセスがあった時点で支援技術ユーザーだということがブラウザに伝わる？</p>
-        <p class="fragment u-taL">現時点では仮想ノードは構築できても、仮想ノードへのフォーカスまでは実装されていない</p>
+        <p>ここでもプライバシーの問題？</p>
+        <aside class="notes">
+          <p>仮想ノードを操作するためフォーカス可能なプロパティとイベントを付与する方法が提案されているが…</p>
+          <p>仮想ノードにアクセスがあった時点で支援技術ユーザーだということがブラウザに伝わる？</p>
+          <p>現時点では仮想ノードは構築できても、仮想ノードへのフォーカスまでは実装されていない</p>
+        </aside>
       </section>
       <section>
         <h3>Query Computed Accessibility Tree</h3>
@@ -764,7 +770,7 @@ window.getComputedAccessibleNode(tree).then(result =&gt; {
       </section>
       <section>
         <h4>Demo</h4>
-        <p data-height="265" data-theme-id="dark" data-slug-hash="aQGrrL" data-default-tab="html,result" data-user="masuP9" data-pen-title="Demo: Query computed Accessible Tree table display: block; table" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/aQGrrL/">Demo: Query computed Accessible Tree table display: block; table</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+        <p data-height="320" data-theme-id="dark" data-slug-hash="aQGrrL" data-default-tab="html,result" data-user="masuP9" data-pen-title="Demo: Query computed Accessible Tree table display: block; table" class="codepen">See the Pen <a href="https://codepen.io/masuP9/pen/aQGrrL/">Demo: Query computed Accessible Tree table display: block; table</a> by masuP9 (<a href="https://codepen.io/masuP9">@masuP9</a>) on <a href="https://codepen.io">CodePen</a>.</p>
       </section>
       <section>
         <h4>Use case</h4>
