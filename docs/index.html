@@ -66,8 +66,8 @@
       <section>
         <h2>今日のお話</h2>
         <p>広義のセマンティクスと今回のセマンティクス</p>
-        <p><abbr title="Linked Of Data">LOD</abbr>などの文書間セマンティクスや、XMLやRDFなどの独自の意味の疎通というよりかは、一般的なウェブサイトやウェブアプリをエンドユーザーがブラウザを通して利用する際のセマンティクス</p>
-        <aside class="note">
+        <aside class="notes">
+          <p><abbr title="Linked Of Data">LOD</abbr>などの文書間セマンティクスや、XMLやRDFなどの独自の意味の疎通というよりかは、一般的なウェブサイトやウェブアプリをエンドユーザーがブラウザを通して利用する際のセマンティクス</p>
         </aside>
       </section>
       <section>
@@ -208,7 +208,6 @@
       <section>
         <ul>
           <li>セマンティクスの変更 👉 DOMツリーの変更</li>
-          <li>UAスタイルシートとの密結合</li>
           <li>新しいセマンティクス 👉 新しい要素</li>
           <li>状態やプロパティの欠如</li>
         </ul>
@@ -266,8 +265,8 @@
       </section>
       <section>
         <h4>hgroup要素</h4>
-        <p>見出しを補強するリードのようなもの、<br>副次的な見出し、キャッチコピー、スローガンなどを<br>マークアップできる。</p>
-        <pre><code class="html">&lt;section&gt;
+        <p class="u-mb0">見出しを補強するリードのようなもの<br>副次的な見出し/キャッチコピー/スローガンを<br>マークアップできる。</p>
+        <pre class="u-mt0"><code class="html">&lt;section&gt;
 &lt;hgroup&gt;
   &lt;h1&gt;deisui_html_radio #sp1&lt;/h1&gt;
   &lt;h2&gt;〜マークアップは裏切らない〜&lt;/h2&gt;
@@ -299,7 +298,7 @@
       <section>
         <p>まだ見ぬ要素も追加される可能性は十分ある</p>
         <aside class="notes">
-          dialogやhgropuだけではなく、まだ見ぬ要素もきっとこれからHTMLに追加される可能性はいくらでもあります。
+          <code>dialog</code>や<code>hgroup</code>だけではなく、まだ見ぬ要素もきっとこれからHTMLに追加される可能性はいくらでもあります。
         </aside>
       </section>
       <section>
@@ -488,7 +487,7 @@
         <h3>ホスト言語との相互進化</h3>
         <p>WAI-ARIAはホスト言語と相互に進化していく</p>
         <div class="u-fzS">
-          <p>e.g. <code>role=&quot;swith&quot;</code> 👉 <code>input[type=&quot;switch&quot;]</code></p>
+          <p>e.g. <code>role=&quot;switch&quot;</code> 👉 <code>input[type=&quot;switch&quot;]</code></p>
           <ul>
             <li><a href="https://github.com/whatwg/html/issues/4180">Requesting &lt;input type=&quot;switch&quot;&gt; · Issue #4180 · whatwg/html</a></li>
             <li><a href="https://w3c.github.io/aria/#switch">Accessible Rich Internet Applications (WAI-ARIA) 1.2</a></li>
@@ -517,7 +516,7 @@
         <p>OSが支援技術にセマンティクスなどの<br>情報を伝えるAPI</p>
       </section>
       <section>
-        <p>ブラウザがレンダリングしているコンテンツを<br>アクセシビリティAPIのオブジェクトに変換して<br>支援技術に伝える</p>
+        <p>ブラウザがレンダリングしているコンテンツと<br>セマンティクスをアクセシビリティAPIの<br>オブジェクトに変換して支援技術に伝える</p>
       </section>
       <section>
         <figure>
@@ -607,6 +606,7 @@
         <ul>
           <li>DOMノード(要素)がないUIに関与できない<br />（e.g. <code>canvas</code>の中のUIなど</li>
           <li class="fragment">関係属性から要素を参照する場合、要素に識別用の<code>id</code>が必要</li>
+          <li>アクセシビリティツリーに影響を及ぼすが、結果どうなったかを確認できない</li>
         </ul>
       </section>
       <section>
@@ -871,8 +871,7 @@ window.getComputedAccessibleNode(element).then(result =&gt; {});</code></pre>
         </style>
       </section>
       <section>
-        <p>主なターゲットは、ライブラリやウェブコンポーネントのオーサー</p>
-        <p>またはウェブの可能性を広げるようなアプリの開発者</p>
+        <h2>まとめ</h2>
       </section>
     </div>
   </div>
