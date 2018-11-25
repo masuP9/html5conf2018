@@ -65,8 +65,6 @@
       </section>
       <section>
         <h2>今日のお話</h2>
-        <!-- TODO 分かりやすくスコープを説明したい -->
-        <!-- 主にWCAG的なアクセシビリティに寄っているという話もしたほうが良いかも？ -->
         <p>広義のセマンティクスと今回のセマンティクス</p>
         <p><abbr title="Linked Of Data">LOD</abbr>などの文書間セマンティクスや、XMLやRDFなどの独自の意味の疎通というよりかは、一般的なウェブサイトやウェブアプリをエンドユーザーがブラウザを通して利用する際のセマンティクス</p>
         <aside class="note">
@@ -617,9 +615,18 @@
       </section>
       <section>
         <h3>IDLインターフェースから<br />ARIA属性を反映する</h3>
-        <pre><code class="JavaScript">const tree = document.createElement('ul');
+        <div class="u-fzL">
+          <pre><code class="JavaScript">const tree = document.createElement('ul');
 tree.role = 'tree';
 tree.ariaLabel = 'menu tree';</code></pre>
+        </div>
+      </section>
+      <section>
+        <h4>関係属性も</h4>
+        <div class="u-fzL">
+          <pre><code class="javascript">const desc = document.querySelectorAll('.tree-desc');
+tree.ariaDescribedBy = [...desc].map(el =&gt; el.id).join(' ');</code></pre>
+        </div>
       </section>
       <section>
         <h4>Demo</h4>
@@ -627,12 +634,47 @@ tree.ariaLabel = 'menu tree';</code></pre>
       </section>
       <section>
         <h3>Out-of-date syntax</h3>
-        <pre><code class="javascript">tree.accessibleNode.role = &quot;tree&quot;;
+        <div class="u-fzL">
+          <pre><code class="javascript">tree.accessibleNode.role = &quot;tree&quot;;
 tree.accessibleNode.label = &quot;menu tree&quot;;</code></pre>
+        </div>
       </section>
       <section>
         <h3>DOMに反映されないARIAを付与する</h3>
-        <p>TODO:</p>
+        <ul>
+          <li>IDLでは要素上のDOMへ属性を反映のみ</li>
+          <li>参照するにも<code>id</code>が必要</li>
+        </ul>
+      </section>
+      <section>
+        <p>さっきのこれ</p>
+        <div class="u-fzL">
+          <pre><code class="javascript">const desc = document.querySelectorAll('.tree-desc');
+tree.ariaDescribedBy = [...desc].map(el =&gt; el.id).join(' ');</code></pre>
+        </div>
+      </section>
+      <section>
+        <p>こうしたい！</p>
+        <div class="u-fzL">
+          <pre><code class="javascript">const desc = document.querySelectorAll('.tree-desc');
+tree.ariaDescribedByElements = [...desc];</code></pre>
+        </div>
+      </section>
+      <section>
+        <h4>ユースケース Web Componentsのデフォルトセマンティクスを定義する</h4>
+        <div class="u-fzL">
+          <pre><code class="javascript">class TabListElement extends HTMLElement { ... }
+customElements.define(
+  &quot;custom-tablist&quot;,
+  TabListElement,
+  { role: &quot;tablist&quot;, ariaOrientation: &quot;horizontal&quot; });</code></pre>
+        </div>
+      </section>
+      <section>
+        <p>Web Components周りは<code>shadowRoot</code>を超える超えないで議論中...</p>
+        <ul class="u-fzS">
+          <li><a href="https://github.com/w3c/webcomponents/issues/758">How to define APIs only for custom element authors · Issue #758 · w3c/webcomponents</a></li>
+        </ul>
       </section>
       <section>
         <h3>支援技術からのイベントに対応</h3>
